@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editTextExcellent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Excellent %"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editTextAverage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Average %"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editTextBelow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Below Average %"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update the values" />
+
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel with no update" />
+</LinearLayout>

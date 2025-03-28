@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bill total: $" />
+
+        <EditText
+            android:id="@+id/editTextBill"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter bill total"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How many people:" />
+
+        <EditText
+            android:id="@+id/editTextPeople"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter number of people"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The service was" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radioExcellent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Excellent (25%)" />
+
+            <RadioButton
+                android:id="@+id/radioAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Average (20%)" />
+
+            <RadioButton
+                android:id="@+id/radioBelow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Below Average (15%)" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tip total: $" />
+
+        <TextView
+            android:id="@+id/textViewTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total: $" />
+
+        <TextView
+            android:id="@+id/textViewPerPerson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total per: $" />
+
+        <Button
+            android:id="@+id/buttonClear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clear" />
+
+        <Button
+            android:id="@+id/buttonUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Tipping Percentages" />
+    </LinearLayout>
+</ScrollView>

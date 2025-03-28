@@ -81,4 +81,22 @@ class MainActivity : AppCompatActivity() {
             findViewById<RadioButton>(R.id.radioBelow).text = "Below Average (${belowPercent}%)"
         }
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("EXCELLENT", excellentPercent)
+        outState.putInt("AVERAGE", averagePercent)
+        outState.putInt("BELOW", belowPercent)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        excellentPercent = savedInstanceState.getInt("EXCELLENT", excellentPercent)
+        averagePercent = savedInstanceState.getInt("AVERAGE", averagePercent)
+        belowPercent = savedInstanceState.getInt("BELOW", belowPercent)
+
+        findViewById<RadioButton>(R.id.radioExcellent).text = "Excellent (${excellentPercent}%)"
+        findViewById<RadioButton>(R.id.radioAverage).text = "Average (${averagePercent}%)"
+        findViewById<RadioButton>(R.id.radioBelow).text = "Below Average (${belowPercent}%)"
+    }
 }

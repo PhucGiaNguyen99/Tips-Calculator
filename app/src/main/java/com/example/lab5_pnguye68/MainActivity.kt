@@ -78,6 +78,11 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("BELOW", belowPercent)
             startActivityForResult(intent, 1)
         }
+
+        val buttonHistory = findViewById<Button>(R.id.buttonHistory)
+        buttonHistory.setOnClickListener {
+            startActivity(Intent(this, HistoryActivity::class.java))
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

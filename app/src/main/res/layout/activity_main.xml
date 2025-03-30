@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <LinearLayout
         android:orientation="vertical"
         android:padding="16dp"
@@ -91,5 +93,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Update Tipping Percentages" />
+
+        <Button
+            android:id="@+id/buttonHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Tip History" />
     </LinearLayout>
 </ScrollView>

@@ -1,5 +1,6 @@
 package com.example.lab5_pnguye68
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -7,11 +8,10 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import org.w3c.dom.Text
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+
 
 class MainActivity : AppCompatActivity() {
     private var excellentPercent = 25
@@ -45,6 +45,17 @@ class MainActivity : AppCompatActivity() {
             val total = bill + tipAmount
             val people = editTextPeople.text.toString().toIntOrNull() ?: 1
             val perPerson = total / people
+
+            val currentTime = java.text.SimpleDateFormat("yyyy-MM-dd HH:mm", java.util.Locale.getDefault()).format(java.util.Date())
+
+            val tipRecord = TipRecord(
+                billAmount = bill,
+                tipAmount = tipAmount,
+                totalAmount = total,
+                date = currentTime
+            )
+
+            saveTipRecord(tipRecord)
 
             textTip.text = "Tip total: $%.2f".format(tipAmount)
             textTotal.text = "Total: $%.2f".format(total)
@@ -98,5 +109,24 @@ class MainActivity : AppCompatActivity() {
         findViewById<RadioButton>(R.id.radioExcellent).text = "Excellent (${excellentPercent}%)"
         findViewById<RadioButton>(R.id.radioAverage).text = "Average (${averagePercent}%)"
         findViewById<RadioButton>(R.id.radioBelow).text = "Below Average (${belowPercent}%)"
+    }
+
+    private fun saveTipRecord(record: TipRecord) {
+        val prefs = getSharedPreferences("tip_history", Context.MODE_PRIVATE)
+        val gson = Gson()
+
+        // Load current list
+        val json = prefs.getString("records", null)
+        val type = object: TypeToken<MutableList<TipRecord>>() {}.type
+        val list: MutableList<TipRecord> = if (json != null) {
+            gson.fromJson(json, type)
+        } else {
+            mutableListOf()
+        }
+
+        // Add new record and save
+        list.add(0, record)
+        val updatedJson = gson.toJson(list)
+        prefs.edit().putString("records", updatedJson).apply()
     }
 }

@@ -17,7 +17,11 @@ class HistoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_history)
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewHistory)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Update with the use of Grid Layout
+        // Each item will be displayed as a CardView in 2-column grid
+        recyclerView.layoutManager = androidx.recyclerview.widget.GridLayoutManager(this, 2)
+
 
         val prefs = getSharedPreferences("tip_history", Context.MODE_PRIVATE)
         val json = prefs.getString("records", null)
@@ -30,5 +34,8 @@ class HistoryActivity : AppCompatActivity() {
         }
 
         recyclerView.adapter = TipRecordAdapter(list)
+
+        recyclerView.addItemDecoration(GridSpacingItemDecoration(16))
+
     }
 }
